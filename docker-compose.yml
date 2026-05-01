@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  sfa-miner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sfa-miner:latest
+    container_name: sfa-miner
+
+    # Mount volumes
+    volumes:
+      # Mount local data directory to container
+      - ./data:/workspace/data
+      # Mount output directory to container
+      - ./output:/workspace/output
+      # Optional: Mount additional bitcode files
+      # - /path/to/your/bitcode:/workspace/input
+
+    # Keep container running
+    stdin_open: true
+    tty: true
+
+    # Set working directory
+    working_dir: /workspace
+
+    # Environment variables (can be overridden)
+    environment:
+      - PROCESSOR=24
+      - TIMEOUT=600
+      - MIN_SUPPORT=10
+      - MIN_CONFIDENCE=0.5
+
+    # Resource limits (optional, adjust based on your system)
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '16'
+    #       memory: 32G
+    #     reservations:
+    #       cpus: '8'
+    #       memory: 16G
+
+    # Network mode
+    network_mode: bridge
+
+    # Command to run
+    command: /bin/bash
+
+# Optional: Define volumes for persistent storage
+volumes:
+  data:
+  output:

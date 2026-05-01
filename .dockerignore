@@ -1,0 +1,73 @@
+# SFA-Miner Docker Ignore File
+# Exclude unnecessary files from Docker build context
+
+# Git
+.git
+.gitignore
+.gitmodules
+.github
+
+# Build artifacts
+build/
+bin/
+*.o
+*.a
+*.so
+*.dylib
+*.obj
+
+# Installation directory
+install/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+*.egg
+
+# Database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Output files
+output/
+*.dot
+*.pdf
+*.png
+*.svg
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Documentation
+*.md
+!README.md
+
+# Large OpenSSL submodule (not needed in Docker)
+openssl/
+
+# Test files (optional, comment out if needed)
+test/
+tests/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
